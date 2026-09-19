@@ -2,26 +2,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Warrior equipment
         EquipmentFactory warriorFactory = new WarriorFactory();
+        showEquipment("WARRIOR", warriorFactory);
 
-        Weapon warriorWeapon = warriorFactory.createWeapon();
-        Armor warriorArmor = warriorFactory.createArmor();
+        EquipmentFactory mageFactory = new MageFactory();
+        showEquipment("MAGE", mageFactory);
+    }
 
-        warriorWeapon.attack();
-        warriorArmor.protect();
+    public static void showEquipment(String characterClass,
+                                     EquipmentFactory factory) {
 
+        Weapon weapon = factory.createWeapon();
+        Armor armor = factory.createArmor();
+
+        System.out.println("=== " + characterClass + " EQUIPMENT ===");
+        System.out.println("Weapon: " + weapon.getName());
+        System.out.println("Damage: " + weapon.getDamage());
+        System.out.println("Armor: " + armor.getName());
+        System.out.println("Defense: " + armor.getDefense());
 
         System.out.println();
 
+        weapon.attack();
+        armor.protect();
 
-        // Mage equipment
-        EquipmentFactory mageFactory = new MageFactory();
-
-        Weapon mageWeapon = mageFactory.createWeapon();
-        Armor mageArmor = mageFactory.createArmor();
-
-        mageWeapon.attack();
-        mageArmor.protect();
+        System.out.println();
     }
 }
